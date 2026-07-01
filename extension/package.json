@@ -1,0 +1,80 @@
+{
+  "name": "multi-window-coordinator-extension",
+  "displayName": "Multi-Window Coordinator",
+  "description": "Registers each VS Code window with a localhost coordinator and supports task handoff workflows.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "private": true,
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "multiWindowCoordinator.connect",
+        "title": "Multi-Window Coordinator: Connect"
+      },
+      {
+        "command": "multiWindowCoordinator.showWindows",
+        "title": "Multi-Window Coordinator: Show Windows"
+      },
+      {
+        "command": "multiWindowCoordinator.refreshSummary",
+        "title": "Multi-Window Coordinator: Refresh Summary"
+      },
+      {
+        "command": "multiWindowCoordinator.acceptNextTask",
+        "title": "Multi-Window Coordinator: Accept Next Task"
+      },
+      {
+        "command": "multiWindowCoordinator.completeActiveTask",
+        "title": "Multi-Window Coordinator: Complete Active Task"
+      },
+      {
+        "command": "multiWindowCoordinator.openTaskBoard",
+        "title": "Multi-Window Coordinator: Open Task Board"
+      }
+    ],
+    "configuration": {
+      "title": "Multi-Window Coordinator",
+      "properties": {
+        "multiWindowCoordinator.baseUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:4317",
+          "description": "Base URL for the local coordinator service."
+        },
+        "multiWindowCoordinator.appRole": {
+          "type": "string",
+          "default": "unknown",
+          "description": "Logical app role for this window, such as frontend, backend, or mobile."
+        },
+        "multiWindowCoordinator.autoConnect": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically register this window with the coordinator when the extension activates."
+        },
+        "multiWindowCoordinator.openTaskBoardUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Optional dashboard URL opened by the Open Task Board command."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "watch": "tsc -w -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.30",
+    "@types/vscode": "^1.98.0",
+    "typescript": "^5.8.3"
+  }
+}

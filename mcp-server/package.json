@@ -1,0 +1,19 @@
+{
+  "name": "multi-window-coordinator-mcp-server",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "MCP facade for the multi-window coordinator service.",
+  "scripts": {
+    "build": "tsc -p ./",
+    "start": "node ./out/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.30",
+    "typescript": "^5.8.3"
+  }
+}

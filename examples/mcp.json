@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "multi-window-coordinator": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/ambra/Kwikledgers/accountant_frontend/tools/multi-window-coordinator/mcp-server/out/index.js"
+      ],
+      "env": {
+        "COORDINATOR_BASE_URL": "http://127.0.0.1:4317"
+      }
+    }
+  }
+}
