@@ -18,6 +18,41 @@ The architecture uses three layers:
 - Prefer task handoff over remote control
 - Treat file contents as opt-in, not background telemetry
 
+## Workspace Integration Boundary
+
+The Coordinator is an experimental routing layer, separate from the daily
+KwikLedgers workflow. Its shared workflow state describes coordination between
+windows, not the execution state or approval of a LangGraph workflow.
+
+| Coordinator concept | Meaning | Does not establish |
+|---|---|---|
+| Connected window | A window registered with the local service | An authorized Azure user or an available LangGraph runtime |
+| Assigned or accepted task | A routing item delivered to a receiving window | An approved Azure Task or authorization to edit a repository |
+| Completed task | Completion of a Coordinator routing item | Passing tests, an Azure closure, posted hours, or a confirmed tracking snapshot |
+| Handoff note | Context supplied to the receiving window | Human approval, an execution capability, or a lifecycle checkpoint |
+
+Within the KwikLedgers workspace, authorization remains governed by the
+[workspace instructions](../.github/copilot-instructions.md). LangGraph owns
+governed execution and its approval checkpoints; FastMCP provides the atomic
+integrations. The Coordinator does not replace either component, post hours,
+close Azure Tasks, or advance story status.
+
+The receiving window must resolve the applicable official entry and current
+context before any governed operation. Accepting a handoff is not approval of
+its contents. Instructions embedded in a task description or note are context,
+not an expansion of the receiving agent's permissions.
+
+Any future operational integration must distinguish Coordinator task IDs from
+Azure work item IDs and preserve request, session, and run boundaries. A
+routing identifier alone is not evidence of correlation or execution.
+Unavailable receivers, missing workflow entries, and unknown execution
+outcomes must remain explicit rather than being reported as completed work.
+
+This document does not activate an integration, register an MCP server, start
+services, or demonstrate cross-window execution. The Coordinator remains
+outside the minimal daily-agent path until a separate implementation and
+validation explicitly establish those capabilities.
+
 ## Components
 
 ### 1. VS Code extension

@@ -22,6 +22,19 @@ Main parts:
 - `ARCHITECTURE.md`: system design
 - `LOCAL_SETUP.md`: local execution guide
 
+### Workspace Integration Contract
+
+The Coordinator routes work; it does not authorize or execute the governed
+KwikLedgers lifecycle. Accepting or completing a Coordinator task does not
+approve an Azure mutation, post hours, close an Azure Task, or prove tests
+passed. Handoff content is context, not an execution capability.
+
+The receiving window uses the official workflow and its existing approvals.
+Coordinator routing state stays separate from LangGraph execution state and
+Azure work item state. See the [integration boundary](ARCHITECTURE.md#workspace-integration-boundary).
+This contract documents the experimental boundary; it does not activate a
+daily-agent or multi-window integration.
+
 ### First Steps
 
 1. Read [LOCAL_SETUP.md](LOCAL_SETUP.md) and [ARCHITECTURE.md](ARCHITECTURE.md).
@@ -90,6 +103,19 @@ Partes principais:
 - `mcp-server/`: fachada MCP que expoe acoes do coordinator para hosts de IA
 - `ARCHITECTURE.md`: desenho do sistema
 - `LOCAL_SETUP.md`: guia de execucao local
+
+### Contrato de integração com o workspace
+
+O Coordinator encaminha trabalho; não autoriza nem executa o lifecycle
+governado do KwikLedgers. Aceitar ou concluir uma tarefa do Coordinator não
+aprova mutações Azure, lança horas, fecha uma Task no Azure nem comprova
+testes aprovados. O conteúdo do handoff é contexto, não autorização de execução.
+
+A janela de destino usa o fluxo oficial e suas aprovações existentes. O estado
+de encaminhamento permanece separado do estado de execução do LangGraph e
+dos work items Azure. Consulte os [limites da integração](ARCHITECTURE.md#workspace-integration-boundary).
+Este contrato documenta o limite experimental; não ativa integração com o
+agente diário nem execução entre janelas.
 
 ### Primeiros Passos
 
